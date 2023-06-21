@@ -76,3 +76,40 @@ The application will be available at `http://localhost:8000`.
 FastAPI automatically generates a Swagger UI for your API. To access it, navigate to `http://localhost:8000/docs` in your web browser.
 
 
+
+### Testing with curl
+
+Here's an example command to test the API with curl:
+
+```shell
+curl -X POST "http://localhost:8000/file_operation" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"operation\":\"check_exists\",\"file_path\":\"/path/to/file\"}"
+```
+
+Replace `"/path/to/file"` with the path to the file you want to check.
+
+The successful response in case the file is available  should be similar to:
+
+```json
+{
+  "status": "success",
+  "exists": true
+}
+```
+
+The successful response in case the file is not available  should be similar to:
+
+```json
+{
+  "status": "success",
+  "exists": false
+}
+```
+
+An unsuccessful response may look like:
+
+```json
+{
+  "status": "failure",
+  "error": "An error message"
+}
+```
